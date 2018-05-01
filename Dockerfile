@@ -74,3 +74,7 @@ RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt
 
 COPY resources/configs/jp.ikedam.jenkins.plugins.extensible_choice_parameter.GlobalTextareaChoiceListProvider.xml /usr/share/jenkins/ref/
 COPY resources/configs/org.jenkinsci.plugins.workflow.libs.GlobalLibraries.xml /usr/share/jenkins/ref/
+
+# TODO: replace SMTP_HOST, SMTP_USER and SMTP_PSWD with values from variables preliminary
+COPY resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml /usr/share/jenkins/ref/
+COPY resources/configs/hudson.tasks.Mailer.xml /usr/share/jenkins/ref/
