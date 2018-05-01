@@ -79,14 +79,14 @@ COPY resources/configs/jp.ikedam.jenkins.plugins.extensible_choice_parameter.Glo
 COPY resources/configs/org.jenkinsci.plugins.workflow.libs.GlobalLibraries.xml /usr/share/jenkins/ref/
 
 # replace SMTP_HOST, SMTP_USER and SMTP_PSWD with values from env variables
-RUN sed -i 's/SMTP_HOST/${SMTP_HOST}/g' resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml
-RUN sed -i 's/SMTP_HOST/${SMTP_HOST}/g' resources/configs/hudson.tasks.Mailer.xml
+RUN sed -i 's#SMTP_HOST#'"$SMTP_HOST"'#g' resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml
+RUN sed -i 's#SMTP_HOST#'"$SMTP_HOST"'#g' resources/configs/hudson.tasks.Mailer.xml
 
-RUN sed -i 's/SMTP_USER/${SMTP_USER}/g' resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml
-RUN sed -i 's/SMTP_USER/${SMTP_USER}/g' resources/configs/hudson.tasks.Mailer.xml
+RUN sed -i 's#SMTP_USER#'"$SMTP_USER"'#g' resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml
+RUN sed -i 's#SMTP_USER#'"$SMTP_USER"'#g' resources/configs/hudson.tasks.Mailer.xml
 
-RUN sed -i 's/SMTP_PASS/${SMTP_PASS}/g' resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml
-RUN sed -i 's/SMTP_PASS/${SMTP_PASS}/g' resources/configs/hudson.tasks.Mailer.xml
+RUN sed -i 's#SMTP_PASS#'"$SMTP_PASS"'#g' resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml
+RUN sed -i 's#SMTP_PASS#'"$SMTP_PASS"'#g' resources/configs/hudson.tasks.Mailer.xml
 
 COPY resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml /usr/share/jenkins/ref/
 COPY resources/configs/hudson.tasks.Mailer.xml /usr/share/jenkins/ref/
