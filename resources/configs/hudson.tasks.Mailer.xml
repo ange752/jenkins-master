@@ -1,7 +1,7 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <hudson.tasks.Mailer_-DescriptorImpl plugin="mailer@1.21">
   <smtpAuthUsername>SMTP_USER</smtpAuthUsername>
-  <smtpAuthPassword>SMTP_PSWD</smtpAuthPassword>
+  <smtpAuthPassword>SMTP_PASS</smtpAuthPassword>
   <smtpHost>SMTP_HOST</smtpHost>
   <useSsl>true</useSsl>
   <charset>UTF-8</charset>

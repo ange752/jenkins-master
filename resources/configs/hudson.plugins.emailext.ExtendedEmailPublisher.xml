@@ -3,7 +3,7 @@
   <mailAccount>
     <smtpHost>SMTP_HOST</smtpHost>
     <smtpUsername>SMTP_USER</smtpUsername>
-    <smtpPassword>SMTP_PSWD</smtpPassword>
+    <smtpPassword>SMTP_PASS</smtpPassword>
     <useSsl>true</useSsl>
   </mailAccount>
   <addAccounts/>

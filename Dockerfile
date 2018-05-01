@@ -4,6 +4,9 @@ ENV ROOT_URL=http://localhost:8083/jenkins
 ENV ROOT_EMAIL=cloud@qaprosoft.com
 ENV ADMIN_USER=admin
 ENV ADMIN_PASS=qaprosoft
+ENV SMTP_HOST=smtp.gmail.com
+ENV SMTP_USER=cloud@qaprosoft.com
+ENV SMTP_PASS=CHANGEME
 ENV JENKINS_PIPELINE_GIT_URL=git@github.com:qaprosoft/qps-pipeline.git
 ENV JENKINS_PIPELINE_GIT_BRANCH=master
 ENV JENKINS_OPTS="--prefix=/jenkins --httpPort=-1 --httpsPort=8083 --httpsKeyStore=/var/jenkins_home/keystore.jks --httpsKeyStorePassword=password"
@@ -75,6 +78,15 @@ RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt
 COPY resources/configs/jp.ikedam.jenkins.plugins.extensible_choice_parameter.GlobalTextareaChoiceListProvider.xml /usr/share/jenkins/ref/
 COPY resources/configs/org.jenkinsci.plugins.workflow.libs.GlobalLibraries.xml /usr/share/jenkins/ref/
 
-# TODO: replace SMTP_HOST, SMTP_USER and SMTP_PSWD with values from variables preliminary
+# replace SMTP_HOST, SMTP_USER and SMTP_PSWD with values from env variables
+sed -i 's%SMTP_HOST%${SMTP_HOST}%g' resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml
+sed -i 's%SMTP_HOST%${SMTP_HOST}%g' resources/configs/hudson.tasks.Mailer.xml
+
+sed -i 's%SMTP_USER%${SMTP_USER}%g' resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml
+sed -i 's%SMTP_USER%${SMTP_USER}%g' resources/configs/hudson.tasks.Mailer.xml
+
+sed -i 's%SMTP_PASS%${SMTP_PASS}%g' resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml
+sed -i 's%SMTP_PASS%${SMTP_PASS}%g' resources/configs/hudson.tasks.Mailer.xml
+
 COPY resources/configs/hudson.plugins.emailext.ExtendedEmailPublisher.xml /usr/share/jenkins/ref/
 COPY resources/configs/hudson.tasks.Mailer.xml /usr/share/jenkins/ref/
