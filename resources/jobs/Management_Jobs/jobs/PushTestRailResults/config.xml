@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><flow-definition>
+    <actions/>
+    <description>TestRail job launcher</description>
+    <keepDependencies>false</keepDependencies>
+    <properties>
+        <org.jenkinsci.plugins.workflow.job.properties.DisableResumeJobProperty plugin="workflow-job@2.34"/>
+        <org.jenkinsci.plugins.workflow.job.properties.DurabilityHintJobProperty plugin="workflow-job@2.34">
+            <hint>PERFORMANCE_OPTIMIZED</hint>
+        </org.jenkinsci.plugins.workflow.job.properties.DurabilityHintJobProperty>
+        <hudson.model.ParametersDefinitionProperty>
+            <parameterDefinitions>
+                <hudson.model.StringParameterDefinition>
+                    <name>uuid</name>
+                    <defaultValue/>
+                    <description>uuid of tests</description>
+                </hudson.model.StringParameterDefinition>
+                <hudson.model.BooleanParameterDefinition>
+                    <name>isRerun</name>
+                    <defaultValue>false</defaultValue>
+                    <description>isRerun parameter</description>
+                </hudson.model.BooleanParameterDefinition>
+            </parameterDefinitions>
+        </hudson.model.ParametersDefinitionProperty>
+    </properties>
+    <triggers/>
+    <logRotator>
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>30</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+    </logRotator>
+    <authToken>ciStart</authToken>
+    <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition">
+        <script>@Library('QPS-Pipeline')
+import com.qaprosoft.jenkins.pipeline.runner.maven.QARunner;
+new com.qaprosoft.jenkins.pipeline.runner.maven.QARunner(this).sendTestRailResults()</script>
+        <sandbox>true</sandbox>
+    </definition>
+</flow-definition>
