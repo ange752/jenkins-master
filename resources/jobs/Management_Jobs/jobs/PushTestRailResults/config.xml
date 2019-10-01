@@ -19,6 +19,11 @@
                     <defaultValue>false</defaultValue>
                     <description>isRerun parameter</description>
                 </hudson.model.BooleanParameterDefinition>
+                <hudson.model.BooleanParameterDefinition>
+                    <name>testrail_enabled</name>
+                    <defaultValue>true</defaultValue>
+                    <description>For this job value is always true</description>
+                </hudson.model.BooleanParameterDefinition>
             </parameterDefinitions>
         </hudson.model.ParametersDefinitionProperty>
     </properties>
