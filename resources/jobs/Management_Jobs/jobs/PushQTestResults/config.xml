@@ -30,11 +30,6 @@
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.BooleanParameterDefinition>
-          <name>isRerun</name>
-          <description>isRerun parameter</description>
-          <defaultValue>false</defaultValue>
-        </hudson.model.BooleanParameterDefinition>
-        <hudson.model.BooleanParameterDefinition>
           <name>qtest_enabled</name>
           <description></description>
           <defaultValue>true</defaultValue>
